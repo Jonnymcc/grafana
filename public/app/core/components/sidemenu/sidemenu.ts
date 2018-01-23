@@ -59,6 +59,11 @@ export class SideMenuCtrl {
         templateHtml: '<help-modal></help-modal>',
       });
       evt.preventDefault();
+    } else if (item.url === '/contact') {
+      appEvents.emit('show-modal', {
+        templateHtml: '<contact-modal></contact-modal>',
+      });
+      evt.preventDefault();
     }
   }
 }

@@ -293,6 +293,7 @@ func setIndexViewData(c *middleware.Context) (*dtos.IndexViewData, error) {
 			{Text: "Keyboard shortcuts", Url: "/shortcuts", Icon: "fa fa-fw fa-keyboard-o", Target: "_self"},
 			{Text: "Community site", Url: "http://community.grafana.com", Icon: "fa fa-fw fa-comment", Target: "_blank"},
 			{Text: "Documentation", Url: "http://docs.grafana.org", Icon: "fa fa-fw fa-file", Target: "_blank"},
+			{Text: "Contact admin", Url: "/contact", Icon: "fa fa-fw fa-envelope", Target: "_self"},
 		},
 	})
 
