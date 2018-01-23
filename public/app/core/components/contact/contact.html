@@ -1,0 +1,21 @@
+<div class="modal-body">
+    <div class="modal-header">
+        <h2 class="modal-header-title">
+            <i class="fa fa-user-circle"></i>
+            <span class="p-l-1">Admins</span>
+        </h2>
+        <a class="modal-header-close" ng-click="ctrl.dismiss();">
+            <i class="fa fa-remove"></i>
+        </a>
+    </div>
+
+    <div class="modal-content contact-modal">
+
+        <div ng-repeat="email in ctrl.emails">
+            <p>{{email}}</p>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+</div>

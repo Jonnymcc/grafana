@@ -42,6 +42,7 @@ import colors from './utils/colors';
 import { assignModelProperties } from './utils/model_utils';
 import { contextSrv } from './services/context_srv';
 import { KeybindingSrv } from './services/keybindingSrv';
+import { contactModal } from './components/contact/contact';
 import { helpModal } from './components/help/help';
 import { JsonExplorer } from './components/json_explorer/json_explorer';
 import { NavModelSrv, NavModel } from './nav_model_srv';
@@ -79,6 +80,7 @@ export {
   assignModelProperties,
   contextSrv,
   KeybindingSrv,
+  contactModal,
   helpModal,
   JsonExplorer,
   NavModelSrv,
