@@ -15,7 +15,7 @@ export class ContactCtrl {
       .get(`/api/users/search?isadmin=1`)
       .then(result => {
         var emails = [];
-        _.forEach(result.users, function(user) {
+        _.forEach(_.take(result.users, 10), function(user) {
             emails.push(user["email"]);
         });
         this.emails = emails;
