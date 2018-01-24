@@ -20,6 +20,13 @@ func TestUserApiEndpoint(t *testing.T) {
 			TotalCount: 2,
 		}
 
+		mockIsAdminResult := models.SearchUserQueryResult{
+			Users: []*models.UserSearchHitDTO{
+				{Name: "user1", IsAdmin: true},
+			},
+			TotalCount: 1,
+		}
+
 		loggedInUserScenario("When calling GET on", "/api/users", func(sc *scenarioContext) {
 			var sentLimit int
 			var sendPage int
@@ -104,6 +111,22 @@ func TestUserApiEndpoint(t *testing.T) {
 
 			So(sentLimit, ShouldEqual, 10)
 			So(sendPage, ShouldEqual, 2)
+		})
+
+		loggedInUserScenario("When calling GET with isadmin querystring parameter on", "/api/users", func(sc *scenarioContext) {
+			bus.AddHandler("test", func(query *models.SearchUsersQuery) error {
+				query.Result = mockIsAdminResult
+				return nil
+			})
+
+			sc.handlerFunc = SearchUsersWithPaging
+			sc.fakeReqWithParams("GET", sc.url, map[string]string{"isadmin": "1"}).exec()
+
+			respJSON, err := simplejson.NewJson(sc.resp.Body.Bytes())
+			So(err, ShouldBeNil)
+
+			So(respJSON.Get("totalCount").MustInt(), ShouldEqual, 1)
+			So(len(respJSON.Get("users").MustArray()), ShouldEqual, 1)
 		})
 	})
 }
